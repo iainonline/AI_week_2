@@ -1,26 +1,15 @@
 """
 @author: TMartin
 @edit IM
+
+
 """
 
 import re  # library for regular expression operations
 import pandas as pd
 import networkx as nx  # library for graphs (that have nodes & edges) or networks
-
-
-def open_file(in_file):
-    roadsList = []
-
-    with open(in_file, 'r') as lines:
-        for line in lines:
-            # remove spaces, tabs or newlines
-            myString = re.sub(r"[\n\t\s]*", "", line)
-            # strip off any remaining whitespaces, and split the string (w.r.t. commas) into words (as a list)
-            road = myString.strip().split(',')  # e.g., ['Brest', 'Rennes', '244']
-            # now add the road to the list of roads
-            roadsList.append(road)
-
-    return roadsList
+import csv
+import matplotlib.pyplot as plt
 
 
 def create_tree(node_list):
@@ -94,8 +83,6 @@ def callingSearch(startCity, goalCity, typeOfSearch, G):
     if typeOfSearch == "bfs":
         g.bfs(startCity, goalCity, G)
 
-import csv
-
 def import_csv(file_name):
     with open(file_name, 'r') as f:
         reader = csv.reader(f)
@@ -110,8 +97,14 @@ if __name__ == "__main__":
     type_of_search = "bfs"
 
     road_list = import_csv(in_file)
-    #line no longer required as my data file is a standard format road_list = open_file(in_file)
+
     G = create_tree(road_list)
+    print(G)
 
     print("Starting Node: " + StartCity)
     callingSearch(StartCity, GoalCity, type_of_search, G)
+
+    pos = nx.spring_layout(G)
+    nx.draw(G, with_labels=True, arrows=True)
+    nx.draw_networkx_edge_labels(G, pos)
+    plt.show()
