@@ -5,6 +5,7 @@
 import re  # library for regular expression operations
 import pandas as pd
 import networkx as nx  # library for graphs (that have nodes & edges) or networks
+from matplotlib import pyplot as plt
 
 
 def open_file(in_file):
@@ -133,3 +134,10 @@ if __name__ == "__main__":
    
     print("Starting Node: " + StartCity)
     callingSearch(StartCity, GoalCity, type_of_search, G)
+
+    G = nx.Graph(G)
+    pos = nx.spring_layout(G)
+    nx.draw_networkx_edge_labels(G, pos)
+    nx.draw(G, pos, with_labels=True)
+    plt.axis('off')
+    plt.show()
