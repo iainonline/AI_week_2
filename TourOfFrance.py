@@ -68,8 +68,29 @@ class Search(Node):
                 for neighbor in nList:
                     if neighbor not in self.visited and neighbor not in self.queue:
                         self.queue.append(neighbor)
-     
-                        
+
+    def dfs(self, startCity, goalCity, G):
+        """
+        Breadth-First Search (BFS).
+        """
+        self.queue.append(startCity)
+        self.startCity = str(startCity)
+        self.neighborList = (G.adj[startCity])
+        while self.queue:
+            node = self.queue.pop(-1)
+            self.visited.append(node)
+            nList = self.getNeighbor(node)
+            if (node == goalCity):
+                print("Found:", goalCity, "")
+                print("These are visited nodes\n >>>", self.visited, "\n")
+
+                self.return_path.append(goalCity)
+                break
+            else:
+                for neighbor in nList:
+                    if neighbor not in self.visited and neighbor not in self.queue:
+                        self.queue.append(neighbor)
+
     def getNeighbor(self, CurrNode):
         """
         A class method that returns a list of nodes that are the neighbor,
@@ -93,7 +114,9 @@ class Search(Node):
 def callingSearch(startCity, goalCity, typeOfSearch, G):
     g = Search()
     if typeOfSearch == "bfs":
-        g.bfs(startCity, goalCity, G)   
+        g.bfs(startCity, goalCity, G)
+    if typeOfSearch == "dfs":
+        g.dfs(startCity, goalCity, G)
         
 
 
@@ -103,11 +126,10 @@ if __name__ == "__main__":
 
     StartCity = "Nantes"
     GoalCity = "Nancy"
-    type_of_search = "bfs"
+    type_of_search = "dfs"
 
     road_list = open_file(in_file)
     G = create_tree(road_list)
    
     print("Starting Node: " + StartCity)
     callingSearch(StartCity, GoalCity, type_of_search, G)
-    

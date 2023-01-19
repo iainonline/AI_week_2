@@ -1,38 +1,9 @@
-Warehouse 2,Warehouse 1,636
-Warehouse 3,Warehouse 1,565
-Warehouse 4,Warehouse 1,245
-Warehouse 6,Warehouse 1,526
-Warehouse 7,Warehouse 1,668
-Warehouse 8,Warehouse 1,437
-Warehouse 9,Warehouse 1,251
-Warehouse 1,Warehouse 2,546
-Warehouse 3,Warehouse 2,375
-Warehouse 8,Warehouse 2,602
-Warehouse 9,Warehouse 2,895
-Warehouse 1,Warehouse 4,213
-Warehouse 2,Warehouse 4,193
-Warehouse 5,Warehouse 4,526
-Warehouse 2,Warehouse 5,1
-Warehouse 9,Warehouse 5,378
-Warehouse 1,Warehouse 6,673
-Warehouse 2,Warehouse 6,319
-Warehouse 3,Warehouse 6,627
-Warehouse 4,Warehouse 6,576
-Warehouse 7,Warehouse 6,298
-Warehouse 8,Warehouse 6,252
-Warehouse 9,Warehouse 6,208
-Warehouse 1,Warehouse 7,786
-Warehouse 2,Warehouse 7,301
-Warehouse 3,Warehouse 7,303
-Warehouse 4,Warehouse 7,348
-Warehouse 5,Warehouse 7,730
-Warehouse 6,Warehouse 7,988
-Warehouse 8,Warehouse 7,223
-Warehouse 9,Warehouse 7,821
-Warehouse 5,Warehouse 8,46
-Warehouse 6,Warehouse 8,359
-Warehouse 7,Warehouse 8,787
-Warehouse 9,Warehouse 8,885
-Warehouse 1,Warehouse 9,59
-Warehouse 2,Warehouse 9,217
-Warehouse 3,Warehouse 9,544
+SITE2,SITE1,636
+SITE6,SITE1,526
+SITE8,SITE1,437
+SITE2,SITE5,1
+SITE1,SITE6,673
+SITE2,SITE6,319
+SITE8,SITE6,252
+SITE5,SITE8,46
+SITE6,SITE8,359

@@ -13,8 +13,8 @@ import matplotlib.pyplot as plt
 
 
 def create_tree(node_list):
-    df = pd.DataFrame(node_list, columns=['City1', 'City2', 'KM'])
-    G = nx.from_pandas_edgelist(df, 'City1', 'City2', edge_attr='KM')
+    df = pd.DataFrame(node_list, columns=['City1', 'City2', 'cost'])
+    G = nx.from_pandas_edgelist(df, 'City1', 'City2', edge_attr='cost')
 
     return G  # a graph object from the networkx library
 
@@ -92,19 +92,21 @@ def import_csv(file_name):
 if __name__ == "__main__":
     in_file = "data.csv"
 
-    StartCity = "Warehouse 1"
-    GoalCity = "Warehouse 5"
+    StartCity = "SITE1"
+    GoalCity = "SITE5"
     type_of_search = "bfs"
 
     road_list = import_csv(in_file)
 
     G = create_tree(road_list)
-    print(G)
 
     print("Starting Node: " + StartCity)
     callingSearch(StartCity, GoalCity, type_of_search, G)
 
+    G = nx.Graph(G)
     pos = nx.spring_layout(G)
-    nx.draw(G, with_labels=True, arrows=True)
-    nx.draw_networkx_edge_labels(G, pos)
+    labels = nx.get_edge_attributes(G, 'cost')
+    nx.draw_networkx_edge_labels(G, pos, edge_labels=labels)
+    nx.draw(G, pos,with_labels=True)
+    plt.axis('off')
     plt.show()
