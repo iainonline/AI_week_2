@@ -122,17 +122,24 @@ def callingSearch(startCity, goalCity, typeOfSearch, G):
 
 
 if __name__ == "__main__":
-    
+
     in_file = "frenchcities.txt"
+    StartCity = "Nantes"
+    GoalCity = "Nancy"
+
+    road_list = open_file(in_file)
+    G = create_tree(road_list)
+
+    type_of_search = "bfs"
+
+    print("Starting Node: " + StartCity + " - Search mode is:" + type_of_search)
+    callingSearch(StartCity, GoalCity, type_of_search, G)
 
     StartCity = "Nantes"
     GoalCity = "Nancy"
     type_of_search = "dfs"
 
-    road_list = open_file(in_file)
-    G = create_tree(road_list)
-   
-    print("Starting Node: " + StartCity)
+    print("Starting Node: " + StartCity + " - Search mode is:" + type_of_search)
     callingSearch(StartCity, GoalCity, type_of_search, G)
 
     G = nx.Graph(G)
