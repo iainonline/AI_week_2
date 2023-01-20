@@ -176,29 +176,52 @@ class Search(Node):
     similiar to bfs above except it implements with a stack instead of a queue
     function will output the return path for dfs and print it to the screen
     """
-    self.visited.append(node)
-    self.stack.append(node)
-    self.node = str(node)
-    self.neighborList = (G.adj[node])
+    def dfs(self, node, goalCity, G):
+        self.visited.append(node)
+        self.stack.append(node)
+        self.node = str(node)
+        self.neighborList = (G.adj[node])
 
-    while self.stack:
-        s = self.stack.pop(0)
-        nList = self.getNeighbor(s)
-        if (s == goalCity):
-            print("Found: ", goalCity, "")
-            self.return_path.append(goalCity)
-            self.find_path(goalCity)  # i did not debug this return path for dfs
-            break
-        else:
-            self.visited.append(s)
-            for neighbor in nList:
-                if neighbor not in self.visited and neighbor not in self.queue:
-                    self.stack.insert(0, neighbor)
+        while self.stack:
+            s = self.stack.pop(0)
+            nList = self.getNeighbor(s)
+            if (s == goalCity):
+                print("Found: ", goalCity,"")
+                self.return_path.append(goalCity)
+                self.find_path(goalCity) # i did not debug this return path for dfs
+                break
+            else:
+                self.visited.append(s)
+                for neighbor in nList:
+                    if neighbor not in self.visited and neighbor not in self.queue:
+                        self.stack.insert(0, neighbor)
    
         
-   
-    
-   
+    """
+    astar search
+    input:  goal city, G(tree), current_node, latlongdict
+    outputs: prints the path to goal and the total cost to the goal
+    """
+
+    def astar(self, goalCity, G, current_node, latlongdict):
+        self.visited.append(current_node)
+        self.stack.append(current_node)
+        self.node = str(current_node)
+        self.neighborList = (G.adj[current_node])
+
+        while self.stack:
+            s = self.stack.pop(0)
+            nList = self.getNeighbor(s)
+            if (s == goalCity):
+                print("Found: ", goalCity, "")
+                self.return_path.append(goalCity)
+                self.find_path(goalCity)  # i did not debug this return path for dfs
+                break
+            else:
+                self.visited.append(s)
+                for neighbor in nList:
+                    if neighbor not in self.visited and neighbor not in self.queue:
+                        self.stack.insert(0, neighbor)
     
    
     
@@ -214,14 +237,6 @@ class Search(Node):
 
 
 
-
-    """
-    astar search
-    input:  goal city, G(tree), current_node, latlongdict
-    outputs: prints the path to goal and the total cost to the goal
-    """
-    def astar(self, goalCity, G, current_node, latlongdict):
-        print("Need to implement A Star Search...")
 
 
 
